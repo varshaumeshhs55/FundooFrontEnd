@@ -1,0 +1,13 @@
+
+  button {
+    background-color:rgb(233, 180, 8);
+    color: rgb(36, 48, 119);
+    padding: 10px 10px;
+    margin: 5px 0;
+    cursor: pointer;
+    width: 35%;
+    }
+    button:hover {
+    opacity: 0.5;
+    }
+    
