@@ -1,16 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { FlexLayoutModule } from "@angular/flex-layout";
-import {MatButtonModule,MatCheckboxModule,MatInputModule,MatProgressSpinnerModule,MatCardModule, MatIconModule} from '@angular/material';
+import { MatButtonModule, MatCheckboxModule, MatInputModule, MatProgressSpinnerModule, MatCardModule, MatIconModule, MatSnackBar } from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
-import {MatToolbarModule} from '@angular/material/toolbar'; 
-import {MatDividerModule} from '@angular/material';
-import { MatMenuModule} from '@angular/material/menu';
-import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatListModule} from '@angular/material/list';
-import {MatExpansionModule} from '@angular/material/expansion';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatDividerModule } from '@angular/material';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatNativeDateModule } from '@angular/material';
 @NgModule({
   declarations: [],
   imports: [
@@ -28,9 +29,11 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatSidenavModule,
     FlexLayoutModule,
     MatCardModule,
-    MatButtonModule,HttpClientModule,
+    MatButtonModule, HttpClientModule,
     MatToolbarModule,
-    MatDividerModule
+    MatDividerModule,
+    MatNativeDateModule
+
   ],
 
   exports: [
@@ -48,7 +51,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatCardModule,
     MatMenuModule,
     MatButtonModule,
-    MatToolbarModule,MatDividerModule
-    ],
+    MatToolbarModule, MatDividerModule,
+    MatNativeDateModule
+  ],
 })
-export class AppMaterialModule{ }
+export class AppMaterialModule { }

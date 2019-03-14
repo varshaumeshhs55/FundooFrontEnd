@@ -1,0 +1,66 @@
+<mat-sidenav-container class="example-container">
+  <mat-sidenav #drawer mode="side" opened role="navigation" class="sidenave">
+    <mat-nav-list class="colour_place">
+      <button mat-menu-item (click)="notes()">
+        <!-- <img class="image"
+            src="./assets/images/note.svg" id="imgNotes">Notes</button><br> -->
+        <mat-icon>note_add</mat-icon>
+        <span>Notes</span>
+      </button>
+      
+      <button mat-menu-item>
+        <mat-icon>notifications</mat-icon>
+        <span>Remainder</span>
+      </button>
+      <mat-divider></mat-divider><br>
+
+
+      <span>
+        <font size="1" face="arial">LABELS</font>
+      </span>
+
+
+      <!-- <div (updateClick)="refresh($event)"> -->
+
+
+
+      <div *ngFor="let label of labels" class="mat-menu-item">
+        <div fxLayout=row fxLayoutGap="10%">
+          <button mat-button class=labelbutton>
+            <div fxFlex="5%">
+              <mat-icon>label_outline</mat-icon>
+            </div>
+            <div fxFlex="90%" class="txtt">{{label.labelName}}</div>
+          </button>
+        </div>
+      </div>
+
+
+      <button mat-menu-item (click)="openDialog()">
+        <mat-icon>edit</mat-icon>
+        <span>Edit Labels</span>
+      </button>
+
+
+
+      <mat-divider></mat-divider>
+
+
+      <button mat-menu-item [routerLink]="['/homepage/archive']">
+        <mat-icon>archive</mat-icon>
+        <span>Archive</span>
+      </button>
+
+      <button mat-menu-item [routerLink]="['/homepage/trash']">
+        <mat-icon>delete</mat-icon>
+        <span>Trash</span>
+      </button>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+
+    <router-outlet></router-outlet>
+   
+  </mat-sidenav-content>
+</mat-sidenav-container>

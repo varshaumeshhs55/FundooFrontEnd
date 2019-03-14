@@ -8,32 +8,20 @@ import { Router } from '@angular/router';
 })
 export class UserService {
 
-  constructor(private httputil: HttputilService,private router:Router) { }
+  constructor(private httpUtil: HttputilService,private router:Router) { }
   login(user) {
-    this.httputil.postService(environment.base_url + 'loginuser', user).subscribe(response => {
-      if (response.status == 200) {
-        console.log("Logged in ")
-        localStorage.setItem('Authorization', response.headers.get('token'));
-        this.router.navigate(['./home']);
-       
-      }
-      else {
-        console.log("Couldnt log in");
-      }
-    });
+   return this.httpUtil.postService(environment.user_url + 'loginuser', user);
+
   }
 
   register(user) {
-    this.httputil.postService(environment.base_url+'registeruser', user).subscribe(response => {
-      console.log(response);
-      if (response.status == 200) {
-        console.log(response.body.header);
-        localStorage.setItem('Authorization', response.body.headers);
-        this.router.navigate(['./login']);
-      }
-      else {
-        console.log(response.body.headers);
-      }
-    })
+  return this.httpUtil.postService(environment.user_url+'registeruser', user)}
+  
+  forgotPassword(user) {
+    return this.httpUtil.postService(environment.user_url + 'forgotpassword', user);
   }
-}
+
+
+resetPassword(user, id) {
+  return this.httpUtil.putService(environment.user_url + 'resetpassword/'+id, user, id);
+}}

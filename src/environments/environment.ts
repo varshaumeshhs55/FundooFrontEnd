@@ -4,7 +4,9 @@
 
 export const environment = {
   production: false,
-  base_url : 'http://localhost:8083/user/'
+  user_url : 'http://localhost:8081/user/',
+  note_url : 'http://localhost:8082/user/',
+  
 };
 
 /*
@@ -15,3 +17,4 @@ export const environment = {
  * on performance if an error is thrown.
  */
 // import 'zone.js/dist/zone-error';  // Included with Angular CLI.
+

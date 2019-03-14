@@ -9,7 +9,7 @@ export class HttputilService {
   constructor(private http: HttpClient) { }
 
 
-  postService(url, object) {
+  postService(url, object): any {
     return this.http.post<any>(url, object, { observe: "response" });
   }
 
@@ -25,7 +25,21 @@ export class HttputilService {
   deleteService(url, Headers) {
     return this.http.delete<any>(url, Headers);
   }
+  postWithBody(url,object,header){
+    return this.http.post<any>(url,object,header);
+  }
+
+  postWithUpdate(url,object,header){
+    return this.http.post<any>(url,object,header);
+  }
+  
+  labelUpdateService(url,object,header){
+    return this.http.put<any>(url,object,header);
+  }
+
+ 
+
+  labelCreateService(url,object,header){
+    return this.http.post<any>(url,object,header);
 }
-
-
-
+}
