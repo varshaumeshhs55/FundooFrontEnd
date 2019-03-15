@@ -1,7 +1,7 @@
 <mat-sidenav-container class="example-container">
   <mat-sidenav #drawer mode="side" opened role="navigation" class="sidenave">
     <mat-nav-list class="colour_place">
-      <button mat-menu-item (click)="notes()">
+      <button mat-menu-item [routerLink]="['/home/main-note']">
         <!-- <img class="image"
             src="./assets/images/note.svg" id="imgNotes">Notes</button><br> -->
         <mat-icon>note_add</mat-icon>
@@ -46,12 +46,12 @@
       <mat-divider></mat-divider>
 
 
-      <button mat-menu-item [routerLink]="['/homepage/archive']">
+      <button mat-menu-item [routerLink]="['/home/archive']">
         <mat-icon>archive</mat-icon>
         <span>Archive</span>
       </button>
 
-      <button mat-menu-item [routerLink]="['/homepage/trash']">
+      <button mat-menu-item [routerLink]="['/home/trash']">
         <mat-icon>delete</mat-icon>
         <span>Trash</span>
       </button>

@@ -6,6 +6,10 @@ import { HomeComponent } from './component/home/home.component';
 import { ForgetpasswordComponent } from './component/forgetpassword/forgetpassword.component';
 import { ResetpasswordComponent } from './component/resetpassword/resetpassword.component';
 import { CreateNoteComponent } from './component/create-note/create-note.component';
+import { RetrieveNoteComponent } from './component/retrieve-note/retrieve-note.component';
+import { MainNotesComponent } from './component/main-notes/main-notes.component';
+import { ArchiveComponent } from './component/archive/archive.component';
+import { TrashComponent } from './component/trash/trash.component';
 
 
 
@@ -17,14 +21,17 @@ const Routes: Routes = [
 {path: 'forgotpassword', component: ForgetpasswordComponent},
 {path: 'resetpassword/:id', component: ResetpasswordComponent,pathMatch: 'prefix'},
 {
-  path: 'homepage', component: HomeComponent,
+  path: 'home', component: HomeComponent,
   children:
     [
-      { path: 'create-note' , component :CreateNoteComponent },
-     
+      { path: 'main-note' , component :MainNotesComponent },
+      { path: 'retrive-note' , component :RetrieveNoteComponent },
+      { path: 'archive', component: ArchiveComponent},
+      { path: 'trash', component: TrashComponent},
+
       {
         path: '',
-        redirectTo: 'create-note',
+        redirectTo: 'main-note',
         pathMatch: 'full'
       }
     ]

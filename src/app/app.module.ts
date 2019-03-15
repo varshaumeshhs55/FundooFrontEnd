@@ -16,7 +16,14 @@ import { ForgetpasswordComponent } from './component/forgetpassword/forgetpasswo
 
 
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-import { CreateNoteComponent } from './component/create-note/create-note.component'; 
+import { CreateNoteComponent } from './component/create-note/create-note.component';
+import { RetrieveNoteComponent } from './component/retrieve-note/retrieve-note.component';
+import { NoteFilterPipe } from './note-filter.pipe';
+import { MainNotesComponent } from './component/main-notes/main-notes.component';
+import { ArchiveComponent } from './component/archive/archive.component';
+import { TrashComponent } from './component/trash/trash.component';
+import { EditLabelComponent } from './component/edit-label/edit-label.component';
+import { UpdateNoteComponent } from './component/update-note/update-note.component';
 
 
 
@@ -25,13 +32,19 @@ import { CreateNoteComponent } from './component/create-note/create-note.compone
     AppComponent,
     LoginComponent,
     RegisterComponent,
+    RetrieveNoteComponent,
     HomeComponent,
     SideNavComponent,
     ForgetpasswordComponent,
     ResetpasswordComponent,
     CreateNoteComponent,
-    
-    
+    NoteFilterPipe,
+    MainNotesComponent,
+    ArchiveComponent,
+    TrashComponent,
+    EditLabelComponent,
+    UpdateNoteComponent,
+
     
     
   
@@ -49,8 +62,7 @@ import { CreateNoteComponent } from './component/create-note/create-note.compone
   
 
   ],
-
-  
+  entryComponents:[EditLabelComponent,UpdateNoteComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

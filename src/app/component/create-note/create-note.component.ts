@@ -10,7 +10,7 @@ import { UserService } from 'src/app/core/services/user.service';
 @Component({
   selector: 'app-create-note',
   templateUrl: './create-note.component.html',
-  styleUrls: ['./create-note.component.css']
+  styleUrls: ['./create-note.component.scss']
 })
 export class CreateNoteComponent implements OnInit {
   @Output() eventEmitter= new EventEmitter();
@@ -41,7 +41,7 @@ export class CreateNoteComponent implements OnInit {
     if (this.createNoteForm.value.title === "" && this.createNoteForm.value.discription === "") {
       return;
     }
-    // console.log(this.mytoken);
+     console.log(this.mytoken);
     console.log(note);
     this.noteService.createNote(note).subscribe(response => {
       this.eventEmitter.emit(true);
@@ -50,4 +50,18 @@ export class CreateNoteComponent implements OnInit {
       });
     })
     }
+    pinned(notes) {
+      notes.pinned=1;
+      this.updateMethod(notes);
+    }
+    
+    updateMethod(notes) {
+      this.noteService.updateNote(notes, notes.id).subscribe(response => {
+        console.log(response);
+      },
+        error => {
+          console.log("error");
+        })
+    }
+    
 }

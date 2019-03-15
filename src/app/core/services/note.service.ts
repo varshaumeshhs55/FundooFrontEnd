@@ -9,22 +9,34 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class NoteService {
-  public token=localStorage.getItem('token');
+  public token = localStorage.getItem('token');
+  public httpheaders = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      'token': this.token
+    })
+  };
+
 
   constructor(private http: HttputilService,
     public snackBar: MatSnackBar) { }
-    getHeader() {
-      var token = localStorage.getItem('token')
-      const httpheaders = {
-        headers: new HttpHeaders({
-          'Content-Type': 'application/json',
-          'token': token
-        })
-      };
-      return httpheaders;
-}
-createNote(notes): Observable<any> {
-  var httpheaders=this.getHeader();
-  return this.http.postWithBody(`${environment.note_url}createnote`,notes, httpheaders);
-}
+
+
+  createNote(notes): Observable<any> {
+    return this.http.postWithBody(`${environment.note_url}createnote`, notes, this.httpheaders);
   }
+  updateNote(notes, id) {
+    return this.http.postWithUpdate(`${environment.note_url}updatenote/` + id, notes, this.httpheaders)
+  }
+  retrieveNotes(): Observable<any> {
+    return this.http.getService(environment.note_url + 'retrievenote', this.httpheaders);
+  }
+  deleteNote(id) {
+    return this.http.deleteForNoteDelete(environment.note_url + 'deletenote/' + id, this.httpheaders);  
+  }
+
+  retriveLabels(): Observable<any>
+  {
+    return this.http.getService(environment.note_url + 'retrievelabel' , this.httpheaders)
+  }
+}

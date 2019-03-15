@@ -18,8 +18,8 @@ export class HttputilService {
     return this.http.put<any>(url, object, Headers);
   }
 
-  getService(url, Headers) {
-    return this.http.get<any>(url, Headers);
+  getService(url, headers) {
+    return this.http.get<any>(url, headers);
   }
 
   deleteService(url, Headers) {
@@ -37,9 +37,33 @@ export class HttputilService {
     return this.http.put<any>(url,object,header);
   }
 
- 
+  deleteForNoteDelete(url,header){
+    return this.http.delete<any>(url,header);
+  }
 
-  labelCreateService(url,object,header){
+  putForLabelUpdate(url,object,header){
+    return this.http.put<any>(url,object,header);
+  }
+
+  deleteForLabelDelete(url,header){
+    return this.http.delete<any>(url,header);
+  }
+
+  postForLabelCreate(url,object,header){
     return this.http.post<any>(url,object,header);
+  }
+
+  deleteForRemoveLabelFromNote(url,header){
+    return this.http.delete<any>(url,header);
+  }
+
+  addForAddLabelFromNote(url,object){
+    return this.http.put<any>(url,object,{observe : 'response'});
+  }
+
+  postToUploadImage(url,object,header){
+    return this.http.post<any>(url,object,header);
+  }
 }
-}
+
+  

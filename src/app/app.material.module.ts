@@ -12,6 +12,10 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatNativeDateModule } from '@angular/material';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatSelectModule } from '@angular/material/select';
+
 @NgModule({
   declarations: [],
   imports: [
@@ -32,7 +36,10 @@ import { MatNativeDateModule } from '@angular/material';
     MatButtonModule, HttpClientModule,
     MatToolbarModule,
     MatDividerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatDialogModule,
+    MatChipsModule,
+    MatSelectModule
 
   ],
 
@@ -52,7 +59,10 @@ import { MatNativeDateModule } from '@angular/material';
     MatMenuModule,
     MatButtonModule,
     MatToolbarModule, MatDividerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatDialogModule,
+    MatChipsModule,
+    MatSelectModule
   ],
 })
 export class AppMaterialModule { }
