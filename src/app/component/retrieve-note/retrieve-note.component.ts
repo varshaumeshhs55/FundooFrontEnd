@@ -11,7 +11,9 @@ import { UpdateNoteComponent } from '../update-note/update-note.component';
 })
 export class RetrieveNoteComponent implements OnInit {
 
-  @Input() notes
+  @Input() notes: Note[] = [];
+
+  @Input() grid;
   @Output() updateNoteEvent = new EventEmitter();
 
   visible = true;
@@ -20,13 +22,13 @@ export class RetrieveNoteComponent implements OnInit {
   addOnBlur = true;
 
 
-  constructor(private noteService: NoteService, private snackBar: MatSnackBar,
+  constructor(private noteService: NoteService, 
     private dailog:MatDialog) { }
 
   ngOnInit() {
   }
 
-  openDialog(note): void {
+  public openDialog(note): void {
     const dialogRef = this.dailog.open(UpdateNoteComponent, {
       width: '500px',
       data: note
@@ -38,9 +40,9 @@ export class RetrieveNoteComponent implements OnInit {
     });
   }
 
-  // addNoteLabel(data) {
-  //   this.updateNoteEvent.emit(data);
-  // }
+  addNoteLabel(data) {
+    this.updateNoteEvent.emit(data);
+  }
 
   moveToTrash(key, note) {
     note.inTrash = 1;
@@ -49,7 +51,7 @@ export class RetrieveNoteComponent implements OnInit {
   }
 
   updateArchiveNote(key, note) {
-    note.archive = key === 'archive' ? true:false;
+    note.archive = key === 'archive' ? 1:0;
     console.log(note.archive);
     note.pinned = 0;
     const data = { key, note };
@@ -62,13 +64,13 @@ export class RetrieveNoteComponent implements OnInit {
     this.updateNoteEvent.emit(data);
   }
 
-  // removeLabel(label, note) {
-  //   this.noteService.removeLabelFromNote(note.noteId, label.labelId).subscribe(response => {
-  //     console.log("deleting check in database");
-  //     const data = { note };
-  //     this.updateNoteEvent.emit(data);
-  //   }, (error) => console.log(error));
-  // }
+  removeLabel(label, note) {
+    this.noteService.removeLabelFromNote(note.id, label.labelId).subscribe(response => {
+      console.log("deleting check in database");
+      const data = { note };
+      this.updateNoteEvent.emit(data);
+    }, (error) => console.log(error));
+  }
 
 //   dailogCollaborator(note)
 //   {

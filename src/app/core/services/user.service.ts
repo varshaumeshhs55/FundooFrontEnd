@@ -18,7 +18,7 @@ export class UserService {
 };
 
   constructor(private httpUtil: HttputilService,private router:Router) { }
-  login(user) {
+  login(user) :Observable<any>{
    return this.httpUtil.postService(environment.user_url + 'loginuser', user);
 
   }

@@ -5,7 +5,7 @@
       <button id="menubuttn" type="button" aria-label="Toggle sidenav" mat-icon-button (click)="toggle()"
         matTooltip="Menu">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-</button>
+      </button>
       <!-- Image -->
       <img src="./assets/images/keep-512.png" style="width:5%; height: 90%">
 
@@ -13,13 +13,23 @@
       <i id="text" fxHide.xs="true">Keep</i>
 
       &nbsp;&nbsp;&nbsp;
-      <!-- Search -->
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-      <form class="slinput" action="action_page.php">
-        <input class="input" type="search" placeholder="Search.." name="search">
-        <button mat-button type="submit"><i class="fa fa-search"></i></button>
-      </form>
-
+       <!-- Search -->
+       <div id="searchbox" fxLayoutGap="2%">
+        <div fxFlex="0%">
+          <button mat-icon-button (click)="searchtest()">
+            <mat-icon id="buttn">search</mat-icon>
+          </button>
+        </div>
+        <div fxFlex="100%">
+          <input matInput id="input" type="text" placeholder="Search" name="searchString" (click)="searchtest()"
+            [(ngModel)]="searchString">
+        </div>
+        <div>
+          <button mat-button *ngIf="searchString" matSuffix mat-icon-button class="button" (click)="clearSearch()">
+            <mat-icon>close</mat-icon>
+          </button>
+        </div>
+</div>
       <!-- Refresh -->
 
       <a mat-button routerLink="/homepage" routerLinkActive="active" matTooltip="Refresh" title="Refresh">
@@ -27,9 +37,10 @@
       </a>
 
       <!-- List -->
-      <a mat-button r routerLinkActive="active" matTooltip="Lists" title="lists">
-        <mat-icon>dns</mat-icon>
-      </a>
+      <button mat-icon-button fxHide.xs="true" fxShow.sm="false" fxShow.md="true" fxShow.lg="true">
+        <mat-icon (click)="viewGrid()" *ngIf="!grid">view_stream</mat-icon>
+        <mat-icon (click)="viewGrid()" *ngIf="grid">view_module</mat-icon>
+      </button>
 
       <!-- Settings -->
       <button fxHide.xs="true" mat-icon-button [matMenuTriggerFor]="settings" matTooltip="Settings">
@@ -78,5 +89,4 @@
 
 
 <!-- side navigation bar -->
-<app-side-nav [toggleSidebar]="toggleNav" ></app-side-nav>
-
+<app-side-nav [toggleSidebar]="toggleNav"></app-side-nav>

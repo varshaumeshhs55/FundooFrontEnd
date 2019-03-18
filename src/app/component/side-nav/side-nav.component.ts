@@ -24,6 +24,7 @@ export class SideNavComponent implements OnInit {
         this.drawer.toggle();
       }
     });
+    this.getLabels()
   }
 
   public navigateTo(path) {
@@ -40,9 +41,11 @@ export class SideNavComponent implements OnInit {
       console.log('The dialog was closed');
     });
   }
-  public getLabels() {
+  private getLabels() {
+    
     this.noteService.retriveLabels().subscribe(label => {
       this.labels = label;
+    
     }
     )
   }

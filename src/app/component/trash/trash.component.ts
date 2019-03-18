@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Note } from 'src/app/core/models/note';
 import { NoteService } from 'src/app/core/services/note.service';
 import { MatSnackBar, MatDialog } from '@angular/material';
+import { HelperServiceService } from 'src/app/service/helper-service.service';
 
 @Component({
   selector: 'app-trash',
@@ -15,13 +16,14 @@ export class TrashComponent implements OnInit {
   public grid = false;
 
   constructor(private noteService: NoteService, private snackBar: MatSnackBar,
+    private helperService:HelperServiceService,
     ) { }
 
   ngOnInit() {
     this.getNotes();
-    // this.helperService.getTheme().subscribe((resp) =>
-    //   this.grid = resp
-    // );
+    this.helperService.getTheme().subscribe((resp) =>
+      this.grid = resp
+    );
   }
 
   getNotes() {

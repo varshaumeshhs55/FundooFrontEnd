@@ -1,10 +1,7 @@
 import { Component, OnInit, Output ,EventEmitter} from '@angular/core';
 import { NoteService } from 'src/app/core/services/note.service';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { HttputilService } from 'src/app/core/services/httputil.service';
 import { MatSnackBar } from '@angular/material';
-import { UserService } from 'src/app/core/services/user.service';
 
 
 @Component({
@@ -13,15 +10,15 @@ import { UserService } from 'src/app/core/services/user.service';
   styleUrls: ['./create-note.component.scss']
 })
 export class CreateNoteComponent implements OnInit {
-  @Output() eventEmitter= new EventEmitter();
+  @Output() createNoteEvent= new EventEmitter();
   createNoteForm: FormGroup;
   submitted = false;
   public mytoken = localStorage.getItem('token');
   
 
-  constructor(private NoteService: NoteService,
-    private formBuilder: FormBuilder, private route: ActivatedRoute, private http: HttputilService, private userService: UserService, 
-    private router: Router, private noteService: NoteService, private snackBar: MatSnackBar
+  constructor(
+    private formBuilder: FormBuilder,
+     private noteService: NoteService, private snackBar: MatSnackBar
 ) { }
 
   ngOnInit() {
@@ -34,34 +31,30 @@ export class CreateNoteComponent implements OnInit {
 
   onSubmit(note) {
     this.submitted = true;
-    
-    if (this.createNoteForm.invalid) {
+    const {invalid, value: {title, discription}} = this.createNoteForm;
+    if (invalid || !title && !discription) {
       return;
     }
-    if (this.createNoteForm.value.title === "" && this.createNoteForm.value.discription === "") {
-      return;
-    }
-     console.log(this.mytoken);
-    console.log(note);
+
     this.noteService.createNote(note).subscribe(response => {
-      this.eventEmitter.emit(true);
+      this.createNoteEvent.emit();
       this.snackBar.open("Note has been created successfully", "OK", {
         duration: 2000
       });
     })
     }
-    pinned(notes) {
-      notes.pinned=1;
-      this.updateMethod(notes);
-    }
+    // pinned(notes) {
+    //   notes.pinned=1;
+    //   this.updateMethod(notes);
+    // }
     
-    updateMethod(notes) {
-      this.noteService.updateNote(notes, notes.id).subscribe(response => {
-        console.log(response);
-      },
-        error => {
-          console.log("error");
-        })
-    }
+    // updateMethod(notes) {
+    //   this.noteService.updateNote(notes, notes.id).subscribe(response => {
+    //     console.log(response);
+    //   },
+    //     error => {
+    //       console.log("error");
+    //     })
+    // }
     
 }

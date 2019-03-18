@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { NoteService } from 'src/app/core/services/note.service';
 import { Note } from 'src/app/core/models/note';
+import { HelperServiceService } from 'src/app/service/helper-service.service';
 
 @Component({
   selector: 'app-main-notes',
@@ -8,12 +9,15 @@ import { Note } from 'src/app/core/models/note';
   styleUrls: ['./main-notes.component.scss']
 })
 export class MainNotesComponent implements OnInit {
-
+public grid=false;
   public notes: Note[] = [];
-  constructor(private noteService: NoteService) { }
+  constructor(private noteService: NoteService,
+    private helperService:HelperServiceService) { }
+   
 
   ngOnInit() {
     this.getNotes();
+    this.helperService.getTheme().subscribe((resp) =>this.grid = resp);
   }
   getNotes() {
     this.noteService.retrieveNotes().subscribe(newNote => {
@@ -27,7 +31,7 @@ export class MainNotesComponent implements OnInit {
     this.updateMethod(data.note);
   }
 
-  updateMethod(note) {
+  private updateMethod(note) {
     this.noteService.updateNote(note, note.id).subscribe(response => {
       this.getNotes();
     },

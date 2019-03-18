@@ -24,6 +24,10 @@ import { ArchiveComponent } from './component/archive/archive.component';
 import { TrashComponent } from './component/trash/trash.component';
 import { EditLabelComponent } from './component/edit-label/edit-label.component';
 import { UpdateNoteComponent } from './component/update-note/update-note.component';
+import { AddNoteLabelsComponent } from './component/add-note-labels/add-note-labels.component';
+import { FilterLabelPipe } from './filter-label.pipe';
+import { SearchNoteComponent } from './component/search-note/search-note.component';
+import { SearchNotesPipe } from './search-notes.pipe';
 
 
 
@@ -44,6 +48,10 @@ import { UpdateNoteComponent } from './component/update-note/update-note.compone
     TrashComponent,
     EditLabelComponent,
     UpdateNoteComponent,
+    AddNoteLabelsComponent,
+    FilterLabelPipe,
+    SearchNoteComponent,
+    SearchNotesPipe,
 
     
     

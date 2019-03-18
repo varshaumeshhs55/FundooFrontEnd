@@ -39,4 +39,29 @@ export class NoteService {
   {
     return this.http.getService(environment.note_url + 'retrievelabel' , this.httpheaders)
   }
+  createLabel(label): Observable<any> {
+    return this.http.postForLabelCreate(environment.note_url + 'createlabel', label, this.httpheaders);
+  }
+  updateLabel(label, id): Observable<any>{
+    return this.http.putForLabelUpdate(environment.note_url + 'updatelabel/' + id, label, this.httpheaders);
+}
+deleteLabel(id): Observable<any> {
+  return this.http.deleteForLabelDelete(environment.note_url + 'deletelabel/' + id, this.httpheaders);
+}
+
+removeLabelFromNote(noteId, labelId): Observable<any> {
+  return this.http.deleteForRemoveLabelFromNote(`${environment.note_url}removenotelabel/`, {
+    params: {
+      noteId: noteId,
+      labelId: labelId,
+    },
+    observe: 'response'
+  }
+  )
+}
+
+addLabelToNote(noteId, label) : Observable<any>{
+  return this.http.addForAddLabelFromNote(`${environment.note_url}addnotelabel/`+noteId,label
+  )
+}
 }

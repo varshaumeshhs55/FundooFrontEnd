@@ -1,8 +1,8 @@
 <button *ngIf="data.pinned" mat-icon-button matTooltip="unpin" (click)="pinned('unpinned',data)" class="button">
-  <img class="image" src="./assets/img/unpinned.png" height="50%" id="imgRem">
+  <img class="image" src="./assets/images/pin.svg" height="50%" id="imgRem">
 </button>
 <button *ngIf="!data.pinned" mat-icon-button matTooltip="pin" (click)="pinned('pinned',data)" class="button">
-  <img class="image" src="./assets/img/pinned.png" height="50%" id="imgRem">
+  <img class="image" src="./assets/images/unpin.png" height="50%" id="imgRem">
 </button>
 <div class="notecard">
   <div>

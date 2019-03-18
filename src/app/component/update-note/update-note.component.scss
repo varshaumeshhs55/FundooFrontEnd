@@ -1,0 +1,33 @@
+.textarea{
+    outline: none;
+}
+
+.mat-dialog-content{
+    padding: 20px 24px;
+  }
+
+  .mat-dialog-title {
+    margin: 0 0 3px;
+    display: block;
+}
+
+.noBorderAndBackground{
+   
+  text-align: left;
+   width: 91%;
+    height: 100%;
+    font-size:12pt;
+    border: hidden;
+    display: flex;
+    outline: none
+ }
+
+ .head{
+  width:500px;
+  position: relative;
+}
+
+.button{
+  position: absolute;
+  right: 350px;
+}

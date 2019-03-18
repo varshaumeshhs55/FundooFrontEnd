@@ -1,3 +1,4 @@
+
 import { NoteFilterPipe } from './note-filter.pipe';
 
 describe('NoteFilterPipe', () => {

@@ -6,21 +6,19 @@ import { NoteService } from 'src/app/core/services/note.service';
 @Component({
   selector: 'app-update-note',
   templateUrl: './update-note.component.html',
-  styleUrls: ['./update-note.component.css']
+  styleUrls: ['./update-note.component.scss']
 })
-export class UpdateNoteComponent implements OnInit {
+export class UpdateNoteComponent {
 
-  visible = true;
-  selectable = true;
-  removable = true;
-  addOnBlur = true;
+  // visible = true;
+  // selectable = true;
+  // removable = true;
+  // addOnBlur = true;
 
   constructor(public dialogRef: MatDialogRef<UpdateNoteComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Note, private noteService: NoteService,
     private snackBar: MatSnackBar) { }
 
-  ngOnInit() {
-  }
 
   closeClick(newNote) {
     console.log(newNote.title);
