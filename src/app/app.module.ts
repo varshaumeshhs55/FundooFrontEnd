@@ -28,6 +28,8 @@ import { AddNoteLabelsComponent } from './component/add-note-labels/add-note-lab
 import { FilterLabelPipe } from './filter-label.pipe';
 import { SearchNoteComponent } from './component/search-note/search-note.component';
 import { SearchNotesPipe } from './search-notes.pipe';
+import { ImageComponent } from './component/image/image.component';
+import { ChangecolourComponent } from './component/changecolour/changecolour.component';
 
 
 
@@ -52,6 +54,8 @@ import { SearchNotesPipe } from './search-notes.pipe';
     FilterLabelPipe,
     SearchNoteComponent,
     SearchNotesPipe,
+    ImageComponent,
+    ChangecolourComponent,
 
     
     
@@ -70,7 +74,7 @@ import { SearchNotesPipe } from './search-notes.pipe';
   
 
   ],
-  entryComponents:[EditLabelComponent,UpdateNoteComponent],
+  entryComponents:[EditLabelComponent,UpdateNoteComponent,ImageComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

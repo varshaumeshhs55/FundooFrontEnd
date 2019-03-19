@@ -1,6 +1,6 @@
 <div class="gk" [ngClass]="grid ? 'gk-grid-view': 'gk-list-view'">
   <div *ngFor="let note of notes" class="gk-container">
-    <mat-card class="head">
+    <mat-card class="head" [style.background-color]="note.color">
       <mat-card-header>
         <button *ngIf="note.pinned" mat-icon-button matTooltip="unpin" (click)="pinned('unpinned',note)" class="button">
           <img class="image" src="./assets/images/pin.svg" height="50%" id="imgRem">
@@ -31,9 +31,7 @@
         <button mat-icon-button matTooltip="Collaborator" (click)="dailogCollaborator(note)">
           <mat-icon>person_add</mat-icon>
         </button>
-        <button mat-icon-button matTooltip="Change color">
-          <mat-icon>palette</mat-icon>
-        </button>
+        <app-changecolour [newNote]="note" (colorChange)="updateColor($event)"></app-changecolour>
         <button mat-icon-button matTooltip="Add image">
           <mat-icon>image</mat-icon>
         </button>

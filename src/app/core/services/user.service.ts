@@ -29,6 +29,24 @@ export class UserService {
   forgotPassword(user) {
     return this.httpUtil.postService(environment.user_url + 'forgotpassword', user);
   }
+  uploadImage(file): Observable<any> {
+    const formdata = new FormData();
+    formdata.append("file", file);
+    return this.httpUtil.postToUploadImage(environment.user_url + 'photo/' + this.token, formdata, {
+      reportProgress: true,
+      responseType: 'text'
+    }
+    );
+  }
+
+  downloadImage():Observable<any> {
+    return this.httpUtil.getService(environment.user_url + 'photo', this.httpheaders);
+  }
+
+  removeImage()
+  {
+    return this.httpUtil.deleteService(environment.user_url + 'photo',this.httpheaders);
+}
 
 
 resetPassword(user, id) {

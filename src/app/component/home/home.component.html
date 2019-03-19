@@ -7,14 +7,13 @@
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <!-- Image -->
-      <img src="./assets/images/keep-512.png" style="width:5%; height: 90%">
+      <p fxHide.xs="true"> <span><img src="./assets/images/keep-512.png" style="width:30px;"></span></p>
 
       <!-- keep -->
-      <i id="text" fxHide.xs="true">Keep</i>
+      <p id="text" fxHide.xs="true">Keep</p>
 
-      &nbsp;&nbsp;&nbsp;
-       <!-- Search -->
-       <div id="searchbox" fxLayoutGap="2%">
+      <!-- Search -->
+      <div id="searchbox" fxLayoutGap="2%">
         <div fxFlex="0%">
           <button mat-icon-button (click)="searchtest()">
             <mat-icon id="buttn">search</mat-icon>
@@ -29,14 +28,14 @@
             <mat-icon>close</mat-icon>
           </button>
         </div>
-</div>
-      <!-- Refresh -->
+      </div>
 
-      <a mat-button routerLink="/homepage" routerLinkActive="active" matTooltip="Refresh" title="Refresh">
+      <!-- Refresh -->
+      <a mat-icon-button [routerLink]="home" routerLinkActive="active" matTooltip="Refresh">
         <mat-icon>refresh</mat-icon>
       </a>
 
-      <!-- List -->
+      <!-- List & Grid -->
       <button mat-icon-button fxHide.xs="true" fxShow.sm="false" fxShow.md="true" fxShow.lg="true">
         <mat-icon (click)="viewGrid()" *ngIf="!grid">view_stream</mat-icon>
         <mat-icon (click)="viewGrid()" *ngIf="grid">view_module</mat-icon>
@@ -60,33 +59,51 @@
           <span>App downloads</span>
         </button>
         <button mat-menu-item>
-          <span>Keyboad Shortcuts</span>
+          <span>Keyboard Shortcuts</span>
         </button>
       </mat-menu>
 
-      <!-- Notification -->
+      <!-- notfications -->
+      <button fxHide.xs="true" mat-icon-button [matMenuTriggerFor]="notifications" matTooltip="notifications">
+        <mat-icon>notifications_on</mat-icon>
+      </button>
+      <mat-menu #notifications="matMenu">
+      </mat-menu>
 
-      <a mat-button routerLinkActive="active" matTooltip="notification" title="notification">
-        <mat-icon>notification_important</mat-icon>
-      </a>
-
-
-      <!-- <button mat-button [matMenuTriggerFor]="user" matTooltip="User Details" title="User Details">
-  <mat-icon>account_circle</mat-icon>
-</button> -->
+      <!-- testing -->
+      <!-- <button mat-menu-button (click)="test()">test</button>
+      <button mat-menu-button (click)="test2()">test2</button> -->
 
       <!-- User -->
       <button mat-icon-button class="icon-button" id="more" [matMenuTriggerFor]="menu">
-        <i id="accountcircle" class="material-icons">account_circle</i></button>
+        <i id="accountcircle" class="material-icons" *ngIf="imageData.imageSrc===null">account_circle</i>
+        <img class="image" *ngIf="imageData.imageSrc!=null" [src]="imageData.imageSrc" height="60%"
+          width="60%">
+        <!-- <mat-list class="icon-button">
+          <mat-list-item>
+            <i id="accountcircle" class="material-icons" *ngIf="imageData.imageSrc===null">account_circle</i>
+            <img mat-list-icon class="image" *ngIf="imageData.imageSrc!=null" [src]="imageData.imageSrc" height="60%"
+              width="60%">
+          </mat-list-item>
+        </mat-list> -->
+      </button>
       <mat-menu #menu="matMenu" class="morecard">
-        <button mat-button (click)="logout()">Sign out</button>
+        <div>
+          <button mat-menu-item (click)="openDialog()">
+            <mat-icon>image</mat-icon>Change Picture
+          </button>
+        </div>
+        <mat-divider></mat-divider>
+        <div fxLayout="row">
+          <button mat-menu-item (click)="logout()">
+            <mat-icon>logout</mat-icon>Sign out
+          </button>
+        </div>
       </mat-menu>
     </mat-toolbar-row>
   </mat-toolbar>
 </div>
 <mat-divider></mat-divider>
 
-
-
 <!-- side navigation bar -->
-<app-side-nav [toggleSidebar]="toggleNav"></app-side-nav>
+<app-side-nav [toggleSidebar]="toggleNav" [grid]="grid"></app-side-nav>

@@ -14,6 +14,7 @@ import { Label } from 'src/app/core/models/label';
 export class SideNavComponent implements OnInit {
   @ViewChild('drawer') public drawer;
   @Input() public toggleSidebar: Subject<any>;
+  @Input() public grid = false;
   public labels: Label[] = [];
   constructor(private router: Router,
     private dailog: MatDialog, private noteService: NoteService) { }

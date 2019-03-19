@@ -43,6 +43,21 @@ export class CreateNoteComponent implements OnInit {
       });
     })
     }
+
+    updateColor(data)
+    {
+      this.noteService.createNote(data.note).subscribe(response => {
+        this.createNoteEvent.emit();
+        this.snackBar.open("Note has been created successfully", "OK", {
+          duration: 2000
+        });
+      })
+    }
+    
+    
+      
+    
+      
     // pinned(notes) {
     //   notes.pinned=1;
     //   this.updateMethod(notes);

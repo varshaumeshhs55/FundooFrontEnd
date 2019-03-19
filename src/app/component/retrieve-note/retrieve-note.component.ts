@@ -72,18 +72,12 @@ export class RetrieveNoteComponent implements OnInit {
     }, (error) => console.log(error));
   }
 
-//   dailogCollaborator(note)
-//   {
-//     const dialogRef = this.dialog.open(CollaboratorComponent, {
-//       width: '500px',
-//       data: note
-//     });
-//     dialogRef.afterClosed().subscribe(result => {
-//       const data = { note }
-//       this.updateNoteEvent.emit(data);
-//       console.log('The dialog was closed');
-//     });
-// }
 
+
+
+
+  updateColor(data){
+    this.updateNoteEvent.emit(data)
   
+}
 }
