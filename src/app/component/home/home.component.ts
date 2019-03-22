@@ -18,15 +18,15 @@ interface ImageData {
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
- 
+
   public grid = false;
   public hide = true;
   public user
   public dynamicBind: Note;
-public searchString = '';
+  public searchString = '';
   public toggleNav: Subject<any> = new Subject();
   public imageData = <ImageData>{};
-  constructor(private helperService:HelperServiceService,private router: Router,private userService:UserService,private sanitizer: DomSanitizer,private dialog:MatDialog) { }
+  constructor(private helperService: HelperServiceService, private router: Router, private userService: UserService, private sanitizer: DomSanitizer, private dialog: MatDialog) { }
 
 
   ngOnInit() {
@@ -53,16 +53,15 @@ public searchString = '';
     )
   }
 
-  refreshPage()
-  {
+  refreshPage() {
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
     };
-}
-public logout() {
-  localStorage.removeItem('token')
-  this.router.navigate(['/login']);
-}
+  }
+  public logout() {
+    localStorage.removeItem('token')
+    this.router.navigate(['/login']);
+  }
 
   public toggle() {
     this.toggleNav.next();
@@ -81,17 +80,17 @@ public logout() {
   clearSearch() {
     this.searchString = '';
     this.router.navigate(['home/main-note'])
-}
+  }
 
-openDialog(): void {
-  const dialogRef = this.dialog.open(ImageComponent, {
-    width: '500px',
-    data: ''
-  });
-  dialogRef.afterClosed().subscribe(result => {
-    this.getImage();
-    console.log('The dialog was closed');
-  });
-}
+  openDialog(): void {
+    const dialogRef = this.dialog.open(ImageComponent, {
+      width: '500px',
+      data: ''
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.getImage();
+      console.log('The dialog was closed');
+    });
+  }
 
 }

@@ -1,45 +1,68 @@
-
-// :host{
-//     .container{
-//       padding-top: 50px;
-//       margin: 20px;
-//       padding-block-end: 20px;
-//       padding-block-start: 20px;
-    
-//     .class{
-//       text-align: center;
-//     }
-//   }}
-
-
-  :host {
-    .gk {
-    &-container {
-      margin: 10px 20px;
-    }
-      &-grid-view {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-around;
-        mat-card{
-          width:300px;
-          position: relative;
-          box-shadow: 0 14px 28px rgba(110, 108, 108, 0.22), 0 10px 10px rgba(110, 108, 108, 0.22);
-        }
-      }
-      &-list-view {
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-        justify-content: space-around;
-        mat-card{
-          width:500px;
-          position: relative;
-          box-shadow: 0 14px 28px rgba(110, 108, 108, 0.22), 0 10px 10px rgba(110, 108, 108, 0.22);
-        }
-      }
-    }
+.button{
+  position: absolute;
+  right: 10px;
 }
-  
-  
+
+:host {
+  .gk {
+  &-container {
+    margin: 10px 20px;
+  }
+    &-grid-view {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      mat-card{
+        width:300px;
+        position: relative;
+        box-shadow: 0 14px 28px rgba(110, 108, 108, 0.22), 0 10px 10px rgba(110, 108, 108, 0.22);
+      }
+    }
+    &-list-view {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      mat-card{
+        width:500px;
+        position: relative;
+        box-shadow: 0 14px 28px rgba(110, 108, 108, 0.22), 0 10px 10px rgba(110, 108, 108, 0.22);
+      }
+    }
+  }
+}
+
+.chip{
+  outline: none;
+  background-color: transparent;
+}
+
+
+
+
+.message{
+opacity: 0.4;
+font-size: 24px;
+}
+
+.searchicon{
+height: 136px;
+margin: 20px;
+opacity: 0.2;
+width: 120px;
+font-size: 161px;
+}
+
+.empty
+{
+display: flex;
+align-items: center;
+flex-direction: column;
+padding: 129px;
+}
+
+.saveButton
+{
+  float: right;
+}

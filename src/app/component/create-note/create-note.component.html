@@ -26,20 +26,19 @@
           </ng-template>
         </mat-expansion-panel-header>
         <mat-panel-description>
-          <input matInput class="note" placeholder="Title" formControlName="title"
+          <input matInput class="note" placeholder="Title" formControlName="title" 
             [ngClass]="{ 'is-invalid': submitted && f.title.errors }" style="width: 500 px;">
-          <!-- <button mat-icon-button matTooltip="Pin_note" (click)=pinned(notes) title="Pin note" style="text-align:right;"
-            class="pinNotes">
-            <img src="./assets/images/pin.svg">
-
-
+           <!-- <button mat-icon-button matTooltip="Pin_note" (click)=pinned(notes) title="Pin note" style="text-align:right;"  class="pinNotes">
+          <img src="./assets/image/Pin-icon.png">
+               
+            
           </button> -->
         </mat-panel-description>
         <mat-panel-description>
-          <textarea matInput class="createNoteForm.value" placeholder="Take a note.." formControlName="discription"
-            [ngClass]="{ 'is-invalid': submitted && f.discription.errors }" style="width: 500px;"></textarea>
-        </mat-panel-description>
-
+          <textarea matInput class="note" placeholder="Take a note.." formControlName="discription"
+           [ngClass]="{ 'is-invalid': submitted && f.discription.errors }"
+            style="width: 500px;"></textarea>
+</mat-panel-description>
         <mat-panel-description>
           <button mat-icon-button matTooltip="Remind me">
             <mat-icon>add_alert</mat-icon>
@@ -55,6 +54,9 @@
           <button mat-button [matMenuTriggerFor]="more_vert" matTooltip="more_vert" title="more_vert">
             <mat-icon>more_vert</mat-icon>
           </button>
+          <button mat-icon-button (click)="archiveNoteSave(createNoteForm.value)" matTooltip="Archive">
+            <mat-icon>archive</mat-icon>
+</button>
           <mat-menu #more_vert="matMenu">
             <button mat-menu-item [routerLink]="['homepage/edit-label']">
               <span>Add labels</span>

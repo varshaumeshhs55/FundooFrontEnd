@@ -30,6 +30,8 @@ import { SearchNoteComponent } from './component/search-note/search-note.compone
 import { SearchNotesPipe } from './search-notes.pipe';
 import { ImageComponent } from './component/image/image.component';
 import { ChangecolourComponent } from './component/changecolour/changecolour.component';
+import { CollaboratorComponent } from './component/collaborator/collaborator.component';
+import { SearchuserPipe } from './searchuser.pipe';
 
 
 
@@ -56,6 +58,8 @@ import { ChangecolourComponent } from './component/changecolour/changecolour.com
     SearchNotesPipe,
     ImageComponent,
     ChangecolourComponent,
+    CollaboratorComponent,
+    SearchuserPipe,
 
     
     
@@ -74,7 +78,7 @@ import { ChangecolourComponent } from './component/changecolour/changecolour.com
   
 
   ],
-  entryComponents:[EditLabelComponent,UpdateNoteComponent,ImageComponent],
+  entryComponents:[EditLabelComponent,UpdateNoteComponent,ImageComponent,CollaboratorComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

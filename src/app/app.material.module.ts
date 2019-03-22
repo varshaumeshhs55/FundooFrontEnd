@@ -41,7 +41,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatDialogModule,
     MatChipsModule,
     MatSelectModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatAutocompleteModule
 
   ],
 
@@ -65,7 +66,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatDialogModule,
     MatChipsModule,
     MatSelectModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatAutocompleteModule
   ],
 })
 export class AppMaterialModule { }

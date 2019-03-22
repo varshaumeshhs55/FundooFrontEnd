@@ -1,9 +1,28 @@
+.noBorderAndBackground{
+  text-align: left;
+   width: 91%;
+    height: 100%;
+    font-size:14pt;
+    border: hidden;
+    display: flex;
+    outline: none
+ }
+
+ .head{
+  width:500px;
+  top : 15px;
+  position: relative;
+}
 :host
 {
   .mainClass{
    
     border-radius: 30px;
     color: wheat;
+  }
+  .example{
+    width: 700px;
+    height: 90px;
   }
   .note{
       
@@ -16,11 +35,43 @@
       display: flex;
       outline: none;
   }
+  .mat-accordion{
+    margin-top: 20px;
+    padding: 20px;
+    width: 500px;
+    height: 30px;
+    }
+
   .align{
 
     text-align: center;
   }
-  img {
-    width:20px;
-   }
+   .container {
+    .mat-card-header {
+        display: flex;
+        justify-content: space-between;
+        border-radius: 10px;
+        button {
+            &.pinned-icon {
+                // background-color:orange;
+                width:20px;
+            }
+            img {
+                width:25px;
+            }
+        }
+    }
+    
+}
+  
+  .mat-expansion-panel{
+  border:0ch
+  }
+  
+  .mat-icon {
+  font-size: 20px;
+  }
+  .mat-button{
+  margin: -5x;
+  }
 }

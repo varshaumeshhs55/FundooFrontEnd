@@ -64,6 +64,26 @@ export class HttputilService {
   postToUploadImage(url,object,header){
     return this.http.post<any>(url,object,header);
   }
+
+getUserEmail(url,header)
+{
+  return this.http.get<any>(url,header);
+}
+
+postForCollaborator(url,header)
+{
+  return this.http.post<any>(url,{},header);
+}
+
+getCollaborateUser(url)
+{
+  return this.http.get<any>(url,{});
+}
+
+removeCollaborateUser(url)
+{
+  return this.http.delete<any>(url,{});
+}
 }
 
   

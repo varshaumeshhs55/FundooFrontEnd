@@ -43,7 +43,16 @@ export class CreateNoteComponent implements OnInit {
       });
     })
     }
-
+    archiveNoteSave(note) {
+      const newNote = {
+        ...note,
+        archive: true
+      }
+      console.log(newNote.archive);
+      this.onSubmit(newNote);
+  
+    }
+  
     updateColor(data)
     {
       this.noteService.createNote(data.note).subscribe(response => {

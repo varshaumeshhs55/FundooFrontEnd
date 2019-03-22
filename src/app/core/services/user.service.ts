@@ -10,12 +10,12 @@ import { Observable } from 'rxjs';
 })
 export class UserService {
   public token = localStorage.getItem('token');
-  public httpheaders = {
-    headers: new HttpHeaders({
+  public httpheaders() {
+    return {headers: new HttpHeaders({
       'Content-Type': 'application/json',
-      'token': this.token
-    })
-};
+      'token': localStorage.getItem('token')
+    })}
+  }
 
   constructor(private httpUtil: HttputilService,private router:Router) { }
   login(user) :Observable<any>{
@@ -40,15 +40,29 @@ export class UserService {
   }
 
   downloadImage():Observable<any> {
-    return this.httpUtil.getService(environment.user_url + 'photo', this.httpheaders);
+    return this.httpUtil.getService(environment.user_url + 'photo', this.httpheaders());
   }
 
   removeImage()
   {
-    return this.httpUtil.deleteService(environment.user_url + 'photo',this.httpheaders);
+    return this.httpUtil.deleteService(environment.user_url + 'photo',this.httpheaders());
 }
 
 
 resetPassword(user, id) {
   return this.httpUtil.putService(environment.user_url + 'resetpassword/'+id, user, id);
-}}
+}
+
+getUsers(): Observable<any> {
+  return this.httpUtil.getService(environment.user_url + 'allusers', { observe: 'response' })
+}
+
+verifyEmail(email): Observable<any> {
+  return this.httpUtil.getUserEmail(environment.user_url + 'verifyemail/' + email, this.httpheaders())
+}
+
+getCollaborateUser(userId): Observable<any> {
+  return this.httpUtil.getCollaborateUser(environment.user_url + 'collaborateduser/' + userId);
+}
+
+}

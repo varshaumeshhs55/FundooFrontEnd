@@ -1,7 +1,8 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
+import { Component, OnInit, Inject, Output, Input } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA, MatSnackBar, MatDialog } from '@angular/material';
 import { Note } from 'src/app/core/models/note';
 import { NoteService } from 'src/app/core/services/note.service';
+import { CollaboratorComponent } from '../collaborator/collaborator.component';
 
 @Component({
   selector: 'app-update-note',
@@ -10,14 +11,14 @@ import { NoteService } from 'src/app/core/services/note.service';
 })
 export class UpdateNoteComponent {
 
-  // visible = true;
-  // selectable = true;
-  // removable = true;
-  // addOnBlur = true;
+  visible = true;
+  selectable = true;
+  removable = true;
+  addOnBlur = true;
 
-  constructor(public dialogRef: MatDialogRef<UpdateNoteComponent>,
+  constructor(public dialog: MatDialog,public dialogRef: MatDialogRef<UpdateNoteComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Note, private noteService: NoteService,
-    private snackBar: MatSnackBar) { }
+    private snackBar: MatSnackBar,) { }
 
 
   closeClick(newNote) {
@@ -52,16 +53,30 @@ export class UpdateNoteComponent {
         console.log("error");
       })
   }
+  public dailogCollaborator(note) {
+    const dialogRef = this.dialog.open(CollaboratorComponent, {
+      width: '500px',
+      data: note
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+}
+removeLabel(label, note) {
+  this.noteService.removeLabelFromNote(note.noteId, label.labelId).subscribe(response => {
+    console.log("deleting check in database");
+    this.dialogRef.close();
+  }, (error) => console.log(error));
+}
 
-  // removeLabel(label, note) {
-  //   this.noteService.removeLabelFromNote(note.noteId, label.labelId).subscribe(response => {
-  //     console.log("deleting check in database");
-  //     this.dialogRef.close();
-  //   }, (error) => console.log(error));
-  // }
+addNoteLabel(data) {
+  this.updateNote(data.note);
+}
 
-//   addNoteLabel(data) {
-//     this.updateNote(data.note);
-// }
 
+updateColor(data)
+{
+  this.updateNote(data.note);
+}
+ 
 }

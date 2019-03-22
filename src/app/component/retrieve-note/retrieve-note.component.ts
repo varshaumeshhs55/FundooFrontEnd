@@ -3,6 +3,7 @@ import { Note } from 'src/app/core/models/note';
 import { MatSnackBar, MatDialog } from '@angular/material';
 import { NoteService } from 'src/app/core/services/note.service';
 import { UpdateNoteComponent } from '../update-note/update-note.component';
+import { CollaboratorComponent } from '../collaborator/collaborator.component';
 
 @Component({
   selector: 'app-retrieve-note',
@@ -43,7 +44,17 @@ export class RetrieveNoteComponent implements OnInit {
   addNoteLabel(data) {
     this.updateNoteEvent.emit(data);
   }
-
+  public dailogCollaborator(note) {
+    const dialogRef = this.dailog.open(CollaboratorComponent, {
+      width: '500px',
+      data: note
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      const data = { note }
+      this.updateNoteEvent.emit(data);
+      console.log('The dialog was closed');
+    });
+}
   moveToTrash(key, note) {
     note.inTrash = 1;
     const data = { key, note };
