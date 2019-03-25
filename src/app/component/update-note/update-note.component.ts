@@ -74,8 +74,7 @@ addNoteLabel(data) {
 }
 
 
-updateColor(data)
-{
+updateColor(data) {
   this.updateNote(data.note);
 }
  

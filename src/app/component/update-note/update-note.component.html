@@ -1,9 +1,9 @@
 <div [style.background-color]="data.color">
   <button *ngIf="data.pinned" mat-icon-button matTooltip="unpin" (click)="pinned('unpinned',data)" class="button">
-    <img class="image" src="./assets/images/pin.svg" height="50%" id="imgRem">
+    <img class="image" src="./assets/images/pin.svg" height="50%"  style="margin-left: 90px"id="imgRem">
   </button>
   <button *ngIf="!data.pinned" mat-icon-button matTooltip="pin" (click)="pinned('pinned',data)" class="button">
-    <img class="image" src="./assets/images/unpin.png" height="50%" id="imgRem">
+    <img class="image" src="./assets/images/unpin.png" height="50%" style="margin-left: 90px" id="imgRem">
   </button>
   <div class="notecard">
     <div>
@@ -29,7 +29,7 @@
       <button mat-icon-button matTooltip="Collaborator" (click)="dailogCollaborator(data)">
         <mat-icon>person_add</mat-icon>
       </button>
-      <app-changecolour [newNote]="note" (colorChange)="updateColor($event)"></app-changecolour>
+      <app-changecolour [newNote]="data" (colorChange)="updateColor($event)"></app-changecolour>
       <button mat-icon-button matTooltip="Add image">
         <mat-icon>image</mat-icon>
       </button>
