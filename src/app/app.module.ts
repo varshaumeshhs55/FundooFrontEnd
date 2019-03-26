@@ -31,7 +31,8 @@ import { SearchNotesPipe } from './search-notes.pipe';
 import { ImageComponent } from './component/image/image.component';
 import { ChangecolourComponent } from './component/changecolour/changecolour.component';
 import { CollaboratorComponent } from './component/collaborator/collaborator.component';
-import { SearchuserPipe } from './searchuser.pipe';
+import { SearchuserPipe } from './search-user.pipe';
+import { RemainderComponent } from './component/remainder/remainder.component';
 
 
 
@@ -60,6 +61,7 @@ import { SearchuserPipe } from './searchuser.pipe';
     ChangecolourComponent,
     CollaboratorComponent,
     SearchuserPipe,
+    RemainderComponent,
 
     
     

@@ -31,7 +31,6 @@ export class AddNoteLabelsComponent implements OnInit {
   public onClickCheckbox(event, label, note) {
     event.stopPropagation();
     this.noteService.addLabelToNote(note.id, label).subscribe(response => {
-      console.log("adding check in database");
       const data = { note };
       this.eventAddNoteLabel.emit(data);
     }, (error) => console.log(error));
@@ -40,7 +39,6 @@ export class AddNoteLabelsComponent implements OnInit {
   public getLabels() {
     this.noteService.retriveLabels().subscribe(newLabel => {
       this.labels = newLabel;
-      console.log(this.labels);
     }, error => {
       this.snackBar.open("error", "error to retrieve labels", { duration: 2000 });
     }
@@ -78,7 +76,6 @@ export class AddNoteLabelsComponent implements OnInit {
     }
     this.noteService.createLabel(newLabel).subscribe(label => {
       this.noteService.addLabelToNote(note.id, label).subscribe(response => {
-        console.log("adding check in database");
         var data = { note };
         this.eventAddNoteLabel.emit(data);
         this.snackBar.open("label created", "Ok", { duration: 2000 });

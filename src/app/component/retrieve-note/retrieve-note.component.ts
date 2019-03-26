@@ -13,9 +13,12 @@ import { CollaboratorComponent } from '../collaborator/collaborator.component';
 export class RetrieveNoteComponent implements OnInit {
 
   @Input() notes: Note[] = [];
+  selectedMoment =new Date();
+  public min = new Date();
 
   @Input() grid;
   @Output() updateNoteEvent = new EventEmitter();
+  @Input() message;
 
   visible = true;
   selectable = true;
@@ -91,4 +94,20 @@ export class RetrieveNoteComponent implements OnInit {
     this.updateNoteEvent.emit(data)
   
 }
+public saveRemainder(selectedMoment,note)
+{
+  note.remainder=selectedMoment;
+  console.log(note.remainder);
+  const data = { note }
+  this.updateNoteEvent.emit(data);
 }
+
+public removeRemainder(note)
+{
+  note.remainder=null;
+  console.log(note.remainder);
+  const data = { note }
+  this.updateNoteEvent.emit(data);
+}
+}
+

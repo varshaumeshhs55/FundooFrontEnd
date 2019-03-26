@@ -1,4 +1,4 @@
-import { SearchuserPipe } from './searchuser.pipe';
+import { SearchuserPipe } from './search-user.pipe';
 
 describe('SearchuserPipe', () => {
   it('create an instance', () => {

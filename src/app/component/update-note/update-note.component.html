@@ -15,6 +15,12 @@
     </div>
 
     <mat-chip-list #chipList>
+        <mat-chip *ngIf="data.remainder" [selectable]="selectable" [removable]="removable"
+          (removed)="removeRemainder(data)">
+          <mat-icon>timer</mat-icon>
+          {{data.remainder|date:'short'}}
+          <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+        </mat-chip>
     <mat-chip *ngFor="let label of data.labels" [selectable]="selectable" [removable]="removable"
       (removed)="removeLabel(label,data)">
       {{label.labelName}}
@@ -22,10 +28,22 @@
     </mat-chip>
   </mat-chip-list>
 
-    <div>
-      <button mat-icon-button matTooltip="Remind me">
+  <div>
+      <button mat-icon-button matTooltip="Remind me" [matMenuTriggerFor]="remind">
         <mat-icon>add_alert</mat-icon>
       </button>
+      <mat-menu #remind="matMenu" class="morecard" (click)="$event.stopPropagation()">
+        <div class="input-wrapper">
+          <label>Add a remainder to note:</label>
+          <hr>
+          <input [min]="min" [(ngModel)]="selectedMoment" [owlDateTimeTrigger]="dtPicker1" [owlDateTime]="dtPicker1"
+            placeholder="select date and time">
+          <owl-date-time #dtPicker1></owl-date-time>
+        </div>
+        <div>
+          <button mat-button class="saveButton" (click)="saveRemainder(selectedMoment,data)">Save</button>
+        </div>
+</mat-menu>
       <button mat-icon-button matTooltip="Collaborator" (click)="dailogCollaborator(data)">
         <mat-icon>person_add</mat-icon>
       </button>

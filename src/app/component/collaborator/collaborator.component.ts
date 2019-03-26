@@ -68,6 +68,7 @@ export class CollaboratorComponent implements OnInit {
 
   
   getCollaborateUser() {
+    // TODO: need to change
     for (let i = 0; i < this.note.collaborators.length; i++) {
       var k = 0;
       console.log(this.note.collaborators[i].userId);
@@ -82,7 +83,6 @@ export class CollaboratorComponent implements OnInit {
 
   removeCollaborator(collabUser) {
     this.noteService.removeCollaborateUser(this.note.id, collabUser.id).subscribe(resp => {
-      console.log(resp)
       this.snackBar.open("collaborator removed", "ok", { duration: 2000 });
       this.dialogRef.close();
     }, error =>

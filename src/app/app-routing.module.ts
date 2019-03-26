@@ -11,6 +11,7 @@ import { MainNotesComponent } from './component/main-notes/main-notes.component'
 import { ArchiveComponent } from './component/archive/archive.component';
 import { TrashComponent } from './component/trash/trash.component';
 import { SearchNoteComponent } from './component/search-note/search-note.component';
+import { RemainderComponent } from './component/remainder/remainder.component';
 
 
 
@@ -30,6 +31,7 @@ const Routes: Routes = [
       { path: 'archive', component: ArchiveComponent},
       { path: 'trash', component: TrashComponent},
       { path: 'search', component: SearchNoteComponent},
+      { path: 'remainder', component: RemainderComponent},
 
       {
         path: '',

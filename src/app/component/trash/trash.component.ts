@@ -35,22 +35,12 @@ export class TrashComponent implements OnInit {
     )
   }
 
-  // openDialog(note): void {
-  //   const dialogRef = this.dialog.open(TrashdailogComponent, {
-  //     width: '500px',
-  //     data: note
-  //   });
-  //   dialogRef.afterClosed().subscribe(result => {
-  //     this.getNotes();
-  //     console.log('The dialog was closed');
-  //   });
-  // }
-
+  
   deleteNote(note) {
     this.noteService.deleteNote(note.id).subscribe(response => {
       this.snackBar.open("deleted Note", "OK", { duration: 2000 });
       this.getNotes();
-    }), error => {
+    }), (error) => {
       this.snackBar.open("error to delete notes", "error", { duration: 2000 });
     }
   }

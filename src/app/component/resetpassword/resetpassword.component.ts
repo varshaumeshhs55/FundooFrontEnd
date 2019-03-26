@@ -39,17 +39,14 @@ export class ResetpasswordComponent implements OnInit {
       });
       return;
     }
-    console.log(user);
     this.userService.resetPassword(user, this.id).subscribe(response => {
       this.router.navigate(['/login']);
       this.snackBar.open("sucess", "password reset successfully", {
         duration: 2000
       });
-      console.log("reset successful", response);
     },
       error => {
         this.snackBar.open("error", "error to reset", { duration: 2000 });
-        console.log("error to reset", error);
       }
     );
   }

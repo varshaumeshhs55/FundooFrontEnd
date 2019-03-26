@@ -1,0 +1,10 @@
+<div class="container" fxLayout="column" fxLayoutGap="5%" fxLayoutAlign="center center">
+  <div fxFlex="40%">
+    <app-create-note (eventCreate)="refresh($event)"></app-create-note>
+  </div>
+  <div fxFlex="40%">
+    <app-retrieve-note [notes]="notes | noteFilter:'remainder'" [grid]="grid" [message]="'remainder'"
+      (updateNoteEvent)="onUpdateNote($event)">
+    </app-retrieve-note>
+  </div>
+</div>

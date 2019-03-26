@@ -16,12 +16,15 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatSelectModule } from '@angular/material/select';
+ import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
     FormsModule,
+    OwlDateTimeModule,
+     OwlNativeDateTimeModule,
     ReactiveFormsModule,
     MatFormFieldModule,
     MatExpansionModule,
@@ -53,6 +56,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatExpansionModule,
     MatSidenavModule,
     MatInputModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule,
     MatIconModule,
     MatListModule,
     FlexLayoutModule,

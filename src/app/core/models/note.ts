@@ -13,6 +13,7 @@ export interface Note {
     color:string;
     labels:Label[];
     collaborators:CollaboratorComponent[];
+    remainder:string;
 
 
 }

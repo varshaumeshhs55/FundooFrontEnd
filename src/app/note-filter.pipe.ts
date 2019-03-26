@@ -34,10 +34,14 @@ export class NoteFilterPipe implements PipeTransform {
         }
       });
     }
-  return null;
-   
-   
-  
-  }
+    else if (valid === 'remainder') {
+      return notes.filter((item) => {
+        if (!item.inTrash && item.remainder) {
+          return item;
+        }
+      });
+    }
+    return null;
 
+  }
 }

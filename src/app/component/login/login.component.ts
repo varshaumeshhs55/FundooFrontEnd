@@ -41,9 +41,7 @@ export class LoginComponent implements OnInit {
     this.submitted = true;
     this.userservice.login(user).subscribe(response => {
       // if (response.status == 200) {
-       console.log("Logged in ")
        localStorage.setItem('token',response.headers.get('token'));
-        console.log(response.headers.get('token'))
          this.router.navigate(['./home']);
        
       // }
@@ -51,15 +49,12 @@ export class LoginComponent implements OnInit {
       //   console.log("Couldnt log in");
       // }
     },error => {
-      console.log(error)
       this.snackBar.open("error", "Coudnt log in", { duration: 2000 })
     });
     
     // stop here if form is invalid
     if (this.loginForm.invalid) {
-      console.log("Invalid");
     }
-console.log(user);
 
   }
 }

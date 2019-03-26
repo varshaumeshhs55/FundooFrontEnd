@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, Output, Input } from '@angular/core';
+import { Component, Inject} from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA, MatSnackBar, MatDialog } from '@angular/material';
 import { Note } from 'src/app/core/models/note';
 import { NoteService } from 'src/app/core/services/note.service';
@@ -15,6 +15,8 @@ export class UpdateNoteComponent {
   selectable = true;
   removable = true;
   addOnBlur = true;
+  selectedMoment=new Date();
+  min=new Date();
 
   constructor(public dialog: MatDialog,public dialogRef: MatDialogRef<UpdateNoteComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Note, private noteService: NoteService,
@@ -22,14 +24,11 @@ export class UpdateNoteComponent {
 
 
   closeClick(newNote) {
-    console.log(newNote.title);
-    console.log(newNote.description);
     this.updateNote(newNote);
   }
 
   moveToTrash(note) {
     note.inTrash = 1;
-    console.log(note);
     this.updateNote(note);
   }
 
@@ -64,7 +63,6 @@ export class UpdateNoteComponent {
 }
 removeLabel(label, note) {
   this.noteService.removeLabelFromNote(note.noteId, label.labelId).subscribe(response => {
-    console.log("deleting check in database");
     this.dialogRef.close();
   }, (error) => console.log(error));
 }
@@ -73,7 +71,10 @@ addNoteLabel(data) {
   this.updateNote(data.note);
 }
 
-
+saveRemainder(selectedMoment, data) {
+  data.remainder = selectedMoment;
+  this.updateNote(data);
+}
 updateColor(data) {
   this.updateNote(data.note);
 }

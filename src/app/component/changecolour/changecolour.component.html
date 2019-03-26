@@ -3,7 +3,8 @@
 <mat-menu #menu="matMenu" class="menucard">
   <ul class="color-palet">
     <li *ngFor="let color of colors">
-      <div class="color-palet-circle" (click)="changeColor(color)" [style.background-color]="color"></div>
+      <div class="color-palet-circle" (click)="changeColor(color)" 
+      [style.background-color]="color"></div>
     </li>
   </ul>
 </mat-menu>
