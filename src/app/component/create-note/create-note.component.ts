@@ -48,7 +48,6 @@ export class CreateNoteComponent implements OnInit {
         ...note,
         archive: true
       }
-      console.log(newNote.archive);
       this.onSubmit(newNote);
   
     }

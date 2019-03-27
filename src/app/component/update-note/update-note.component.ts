@@ -45,12 +45,12 @@ export class UpdateNoteComponent {
 
   updateNote(newNote) {
     this.noteService.updateNote(newNote, newNote.noteId).subscribe(response => {
-      console.log(response);
       this.dialogRef.close();
     },
       error => {
         console.log("error");
       })
+      
   }
   public dailogCollaborator(note) {
     const dialogRef = this.dialog.open(CollaboratorComponent, {

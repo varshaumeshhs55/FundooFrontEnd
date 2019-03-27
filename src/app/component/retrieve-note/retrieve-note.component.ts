@@ -66,7 +66,6 @@ export class RetrieveNoteComponent implements OnInit {
 
   updateArchiveNote(key, note) {
     note.archive = key === 'archive' ? 1:0;
-    console.log(note.archive);
     note.pinned = 0;
     const data = { key, note };
     this.updateNoteEvent.emit(data);
@@ -80,7 +79,6 @@ export class RetrieveNoteComponent implements OnInit {
 
   removeLabel(label, note) {
     this.noteService.removeLabelFromNote(note.id, label.labelId).subscribe(response => {
-      console.log("deleting check in database");
       const data = { note };
       this.updateNoteEvent.emit(data);
     }, (error) => console.log(error));

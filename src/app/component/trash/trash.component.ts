@@ -47,9 +47,7 @@ export class TrashComponent implements OnInit {
 
   restore(note) {
     note.inTrash = 0;
-    console.log(note);
     this.noteService.updateNote(note, note.id).subscribe(response => {
-      console.log(response);
       this.snackBar.open("Restored", "Ok", { duration: 2000 });
       this.getNotes();
     },

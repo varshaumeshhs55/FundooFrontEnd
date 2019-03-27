@@ -36,9 +36,7 @@ export class RegisterComponent implements OnInit {
       if (this.registerForm.invalid) {
         return;
       }
-      console.log(user);
       this.userservice.register(user).subscribe(response => {
-        console.log("registartion successful");
         this.router.navigate(['/login']);
       }, error => {
         this.snackBar.open("error", "cannot register", { duration: 2000 })

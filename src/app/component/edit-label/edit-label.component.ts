@@ -6,7 +6,7 @@ import { NoteService } from 'src/app/core/services/note.service';
 @Component({
   selector: 'app-edit-label',
   templateUrl: './edit-label.component.html',
-  styleUrls: ['./edit-label.component.css']
+  styleUrls: ['./edit-label.component.scss']
 })
 export class EditLabelComponent implements OnInit {
   public labels:Label[]=[];
@@ -38,7 +38,6 @@ export class EditLabelComponent implements OnInit {
     {
       return ;
     }
-    console.log(name);
     const newLabel=
     {
       ...label,

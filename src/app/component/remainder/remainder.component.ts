@@ -24,7 +24,6 @@ export class RemainderComponent implements OnInit {
     this.helperService.getTheme().subscribe((resp) =>
       this.grid = resp
     );
-    console.log(this.message)
   }
 
   public refresh() {
@@ -43,6 +42,7 @@ export class RemainderComponent implements OnInit {
         console.log("error");
       })
   }
+  
 
   public getNotes() {
     this.noteService.retrieveNotes().subscribe(newNote => {

@@ -33,7 +33,6 @@ private httpUtil: HttputilService, private snackBar: MatSnackBar) { }
     if (this.forgotForm.invalid) {
       return;
     }
-    console.log(user);
     this.userService.forgotPassword(user).subscribe(response => {
       console.log("reset password mail sent to your email");
       this.snackBar.open("open your email to reset password", "Ok", { duration: 2000 })
