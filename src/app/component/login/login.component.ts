@@ -40,19 +40,14 @@ export class LoginComponent implements OnInit {
   onSubmit(user) {
     this.submitted = true;
     this.userservice.login(user).subscribe(response => {
-      // if (response.status == 200) {
        localStorage.setItem('token',response.headers.get('token'));
          this.router.navigate(['./home']);
        
-      // }
-      // else {
-      //   console.log("Couldnt log in");
-      // }
+     
     },error => {
       this.snackBar.open("error", "Coudnt log in", { duration: 2000 })
     });
     
-    // stop here if form is invalid
     if (this.loginForm.invalid) {
     }
 

@@ -3,6 +3,7 @@ import { MatDialogRef, MAT_DIALOG_DATA, MatSnackBar, MatDialog } from '@angular/
 import { Note } from 'src/app/core/models/note';
 import { NoteService } from 'src/app/core/services/note.service';
 import { CollaboratorComponent } from '../collaborator/collaborator.component';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-update-note',
@@ -17,10 +18,12 @@ export class UpdateNoteComponent {
   addOnBlur = true;
   selectedMoment=new Date();
   min=new Date();
+  selectedFiles:File;
+  showDelete=false;
 
   constructor(public dialog: MatDialog,public dialogRef: MatDialogRef<UpdateNoteComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Note, private noteService: NoteService,
-    private snackBar: MatSnackBar,) { }
+    private snackBar: MatSnackBar, private sanitizer:DomSanitizer) { }
 
 
   closeClick(newNote) {
@@ -58,7 +61,6 @@ export class UpdateNoteComponent {
       data: note
     });
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
     });
 }
 removeLabel(label, note) {
@@ -79,4 +81,33 @@ updateColor(data) {
   this.updateNote(data.note);
 }
  
+
+public onFileChanged(event, note) {
+  this.selectedFiles = event.target.files[0];
+  this.uploadImage(note);
 }
+
+public uploadImage(note) {
+  this.noteService.addImage(this.selectedFiles, note.noteId).subscribe((resp) => {
+    console.log("image added")
+    this.updateNote(note);
+  }
+  );
+}
+
+public getImages(image, note): any {
+  const url = `data:${note.contentType};base64,${image.images}`;
+  return this.sanitizer.bypassSecurityTrustUrl(url);
+}
+
+public deleteImage(image,note)
+{
+  console.log(image.imagesId)
+  this.noteService.removeImage(image.imagesId).subscribe((resp)=>
+  {
+    console.log("successfull")
+    this.updateNote(note);
+  })
+}
+}
+

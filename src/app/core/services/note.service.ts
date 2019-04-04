@@ -73,4 +73,19 @@ export class NoteService {
 
 
   }
+
+  addImage(file, noteId) {
+    const formdata = new FormData();
+    formdata.append("file", file);
+    return this.http.postForAddImage(environment.note_url + 'photo/' + noteId, formdata, {
+      reportProgress: true,
+      responseType: 'text'
+    })
+  }
+
+  removeImage(imagesId)
+  {
+    return this.http.removeImage(environment.note_url + 'photo/' + imagesId);
+  }
 }
+

@@ -36,7 +36,6 @@ export class HomeComponent implements OnInit {
   getImage() {
     this.userService.downloadImage().subscribe(resp => {
       this.user = resp
-      console.log(this.user)
       if (this.user.profilePicture != null) {
         const url = `data:${this.user.contentType};base64,${this.user.profilePicture}`;
         this.imageData = {
@@ -65,7 +64,6 @@ export class HomeComponent implements OnInit {
 
   public toggle() {
     this.toggleNav.next();
-    console.log(this.toggleNav)
   }
 
   public viewGrid() {
@@ -89,7 +87,6 @@ export class HomeComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       this.getImage();
-      console.log('The dialog was closed');
     });
   }
 

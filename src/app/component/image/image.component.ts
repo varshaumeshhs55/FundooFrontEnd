@@ -35,6 +35,7 @@ export class ImageComponent implements OnInit {
       this.dialogRef.close();
     });
   }
+
   close() {
     this.dialogRef.close();
   }

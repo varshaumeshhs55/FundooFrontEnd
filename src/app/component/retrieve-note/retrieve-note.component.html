@@ -2,12 +2,18 @@
   <div *ngFor="let note of notes" class="gk-container">
     <mat-card class="head" [style.background-color]="note.color">
       <mat-card-header>
-        <button *ngIf="note.pinned" mat-icon-button matTooltip="unpin" (click)="pinned('unpinned',note)" class="button">
-          <img class="image" src="./assets/images/pin.svg" height="50%" id="imgRem">
-        </button>
-        <button *ngIf="!note.pinned" mat-icon-button matTooltip="pin" (click)="pinned('pinned',note)" class="button">
-          <img class="image" src="./assets/images/unpin.png" height="50%" id="imgRem">
-        </button>
+          <button *ngIf="note.pinned" mat-icon-button matTooltip="unpin" (click)="pinned('unpinned',note)" class="button">
+              <img src="./assets/images/pin.svg" width="50%" id="imgRem">
+            </button>
+            <button *ngIf="!note.pinned" mat-icon-button matTooltip="pin" (click)="pinned('pinned',note)" class="button">
+              <img  src="./assets/images/unpin.png" width="50%" id="imgRem">
+            </button>
+        <div *ngFor="let image of note.images" class="image">
+          <img [src]="getImages(image,note)" class="imageSize">
+        </div>
+      </mat-card-header>
+      <mat-card-header>
+       
         <mat-card-title (click)=openDialog(note)>
           {{note.title}}
         </mat-card-title>
@@ -15,9 +21,15 @@
       <mat-card-content (click)=openDialog(note)>
         {{note.discription}}
       </mat-card-content>
+      <!-- <mat-card-content>
+        <div *ngFor="let image of note.images" class="image">
+          <img [src]="getImages(image,note)" class="imageSize">
+        </div>
+      </mat-card-content> -->
+
 
       <mat-chip-list #chipList>
-          <mat-chip *ngIf="note.remainder" [selectable]="selectable" [removable]="removable"
+        <mat-chip *ngIf="note.remainder" [selectable]="selectable" [removable]="removable"
           (removed)="removeRemainder(note)">
           <mat-icon>timer</mat-icon>
           {{note.remainder|date:'short'}}
@@ -51,7 +63,8 @@
           </button>
           <app-changecolour [newNote]="note" (colorChange)="updateColor($event)"></app-changecolour>
           <button mat-icon-button matTooltip="Add image">
-            <mat-icon>image</mat-icon>
+            <input style="display: none" type="file" (change)="onFileChanged($event,note)" #fileInput>
+            <mat-icon (click)="fileInput.click()">image</mat-icon>
           </button>
           <button mat-icon-button *ngIf="!note.archive" (click)="updateArchiveNote('archive',note)"
             matTooltip="Archive">

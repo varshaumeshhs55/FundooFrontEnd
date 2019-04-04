@@ -31,7 +31,6 @@ export class ArchiveComponent implements OnInit {
       this.getNotes();
     },
       error => {
-        console.log("error");
       })
   }
 

@@ -1,9 +1,12 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output, Inject,  } from '@angular/core';
 import { Note } from 'src/app/core/models/note';
-import { MatSnackBar, MatDialog } from '@angular/material';
+import { MatDialog,  MatSnackBar, MAT_DIALOG_DATA, MatDialogRef,  } from '@angular/material';
 import { NoteService } from 'src/app/core/services/note.service';
 import { UpdateNoteComponent } from '../update-note/update-note.component';
 import { CollaboratorComponent } from '../collaborator/collaborator.component';
+import { UserService } from 'src/app/core/services/user.service';
+import { DomSanitizer } from '@angular/platform-browser';
+import { Label } from 'src/app/core/models/label';
 
 @Component({
   selector: 'app-retrieve-note',
@@ -13,21 +16,25 @@ import { CollaboratorComponent } from '../collaborator/collaborator.component';
 export class RetrieveNoteComponent implements OnInit {
 
   @Input() notes: Note[] = [];
-  selectedMoment =new Date();
+  selectedMoment = new Date();
   public min = new Date();
 
   @Input() grid;
   @Output() updateNoteEvent = new EventEmitter();
   @Input() message;
-
+ 
   visible = true;
   selectable = true;
   removable = true;
   addOnBlur = true;
+  public newLabels: Label[] = [];
+  selectedFiles: File;
+imageSrc: any;
 
+ 
 
-  constructor(private noteService: NoteService, 
-    private dailog:MatDialog) { }
+  constructor(private noteService: NoteService, private userService: UserService,
+    private dailog: MatDialog, private snackBar: MatSnackBar, private sanitizer: DomSanitizer ) { }
 
   ngOnInit() {
   }
@@ -40,7 +47,6 @@ export class RetrieveNoteComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       const data = { note }
       this.updateNoteEvent.emit(data);
-      console.log('The dialog was closed');
     });
   }
 
@@ -55,9 +61,8 @@ export class RetrieveNoteComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       const data = { note }
       this.updateNoteEvent.emit(data);
-      console.log('The dialog was closed');
     });
-}
+  }
   moveToTrash(key, note) {
     note.inTrash = 1;
     const data = { key, note };
@@ -65,7 +70,7 @@ export class RetrieveNoteComponent implements OnInit {
   }
 
   updateArchiveNote(key, note) {
-    note.archive = key === 'archive' ? 1:0;
+    note.archive = key === 'archive' ? 1 : 0;
     note.pinned = 0;
     const data = { key, note };
     this.updateNoteEvent.emit(data);
@@ -83,29 +88,29 @@ export class RetrieveNoteComponent implements OnInit {
       this.updateNoteEvent.emit(data);
     }, (error) => console.log(error));
   }
-
-
-
-
-
-  updateColor(data){
-    this.updateNoteEvent.emit(data)
   
-}
-public saveRemainder(selectedMoment,note)
-{
-  note.remainder=selectedMoment;
-  console.log(note.remainder);
-  const data = { note }
-  this.updateNoteEvent.emit(data);
+
+  public onFileChanged(event, note) {
+    this.selectedFiles = event.target.files[0];
+    this.uploadImage(note);
+  }
+
+  public uploadImage(note) {
+    this.noteService.addImage(this.selectedFiles, note.id).subscribe((resp) => {
+      console.log("image added")
+      const data = { note }
+      this.updateNoteEvent.emit(data);
+    }
+    );
+  }
+
+  public getImages(image, note): any {
+    const url = `data:${note.contentType};base64,${image.images}`;
+    return this.sanitizer.bypassSecurityTrustUrl(url);
+  }
 }
 
-public removeRemainder(note)
-{
-  note.remainder=null;
-  console.log(note.remainder);
-  const data = { note }
-  this.updateNoteEvent.emit(data);
-}
-}
+
+
+
 

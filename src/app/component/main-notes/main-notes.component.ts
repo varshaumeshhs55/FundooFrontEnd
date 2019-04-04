@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
+import { Component, OnInit, } from '@angular/core';
 import { NoteService } from 'src/app/core/services/note.service';
 import { Note } from 'src/app/core/models/note';
 import { HelperServiceService } from 'src/app/service/helper-service.service';

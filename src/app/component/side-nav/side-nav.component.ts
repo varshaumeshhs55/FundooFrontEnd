@@ -39,7 +39,6 @@ export class SideNavComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       this.getLabels();
-      console.log('The dialog was closed');
     });
   }
   private getLabels() {

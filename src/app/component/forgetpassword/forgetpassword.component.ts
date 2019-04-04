@@ -34,7 +34,6 @@ private httpUtil: HttputilService, private snackBar: MatSnackBar) { }
       return;
     }
     this.userService.forgotPassword(user).subscribe(response => {
-      console.log("reset password mail sent to your email");
       this.snackBar.open("open your email to reset password", "Ok", { duration: 2000 })
     }, error => {
       this.snackBar.open("error", "please enter the registered email", { duration: 2000 })

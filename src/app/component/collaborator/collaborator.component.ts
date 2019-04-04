@@ -40,7 +40,7 @@ export class CollaboratorComponent implements OnInit {
   public getUsers() {
     this.userService.getUsers().subscribe(({ body }) => {
       this.users = body;
-      console.log(this.users)
+
     }
       , error => console.log("error"));
   }

@@ -51,6 +51,6 @@ export class RemainderComponent implements OnInit {
       this.snackBar.open("error", "error to retrieve notes", { duration: 2000 });
     }
     )
-  }
+  
+}}
 
-}
